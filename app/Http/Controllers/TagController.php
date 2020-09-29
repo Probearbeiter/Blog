@@ -6,16 +6,15 @@ use App\Models\Post;
 use App\Models\Category;
 use App\Models\Tag;
 
-class IndexController extends Controller
+class TagController extends Controller
 {
-
-    public function index()
+    public function index($slug)
     {
-        //get the posts that are published, sort by decreasing order of "id".
-        $posts = Post::where('is_published',true)->orderBy('id','desc')->get();
+        //get the requested tag
+        $tag = Tag::query()->where('slug', $slug)->first();
 
-        //get the featured posts
-        $featured_posts = Post::where('is_published',true)->where('is_featured',true)->orderBy('id','desc')->take(5)->get();
+        //get the posts with that tag
+        $posts = $tag->posts()->get();
 
         //get all the categories
         $categories = Category::all();
@@ -27,9 +26,9 @@ class IndexController extends Controller
         $recent_posts = Post::where('is_published',true)->orderBy('created_at','desc')->take(5)->get();
 
         //return the data to the corresponding view
-        return view('home', array(
+        return view('tag', array(
+            'tag' => $tag,
             'posts' => $posts,
-            'featured_posts' => $featured_posts,
             'categories' => $categories,
             'tags' => $tags,
             'recent_posts' => $recent_posts
