@@ -1,0 +1,5 @@
+laravel blog (inspiration: https://dev.to/ericnanhu/build-a-simple-blog-using-php-and-laravel-beginner-s-guide-25kf)
+  
+neue router in laravel8 (https://medium.com/@litvinjuan/how-to-fix-target-class-does-not-exist-in-laravel-8-f9e28b79f8b4)
+    
+  
