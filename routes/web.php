@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\IndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// string method (as in laravel v7 and earlier)
+//Route::get('/index', 'App\Http\Controllers\IndexController@index');
+
+// action method (needs namespace to be imported)
+Route::get('index', [IndexController::class, 'index']);
+
+
 Route::get('/', function () {
-    return view('welcome');
+//    return view('welcome');
+    return 'Hello Blog!';
 });
+
