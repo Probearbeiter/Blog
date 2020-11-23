@@ -20,7 +20,7 @@ Route::get('/', function () {
 
 Route::get('/blog/add', function () {
     return view("/blog/add");
-});
+})->middleware('auth.basic');
 
 Route::post('/blog/savePost', 'App\Http\Controllers\BlogController@savePost');
 
